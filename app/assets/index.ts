@@ -2,6 +2,7 @@
 export { default as mapa } from './mapa.jpg'
 export { default as mapa2 } from './mapa-2.jpg'
 export { default as motor2 } from './motor2.png'
+export { default as profile } from './Javi.png'
 
 // GIFs
 export { default as sura1 } from './sura-1.gif'

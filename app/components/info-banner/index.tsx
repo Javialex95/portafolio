@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion } from "motion/react";
 import { useTranslations } from "@/app/i18n";
+import { profile } from "@/app/assets";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -44,7 +46,7 @@ const InfoBanner = () => {
 
           {/* Subtitle with line */}
           <motion.div className="flex items-center gap-3" {...fadeUp(0.25)}>
-            <span className="text-blue-400 font-semibold text-base whitespace-nowrap">
+            <span className="text-brown-400 font-semibold text-base whitespace-nowrap">
               {t.hero.subtitle}
             </span>
             <span className="h-px flex-1 bg-zinc-700" />
@@ -73,7 +75,7 @@ const InfoBanner = () => {
           {/* CTA */}
           <motion.a
             href="#contact"
-            className="self-start mt-1 flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 transition-colors text-white px-6 py-2.5 rounded-full text-sm font-medium"
+            className="self-start mt-1 flex items-center gap-2 bg-brown-600 hover:bg-brown-500 transition-colors text-white px-6 py-2.5 rounded-full text-sm font-medium"
             {...fadeUp(0.5)}
           >
             {t.hero.cta} <span aria-hidden>→</span>
@@ -82,23 +84,29 @@ const InfoBanner = () => {
 
         {/* Right — Avatar */}
         <motion.div
-          className="hidden md:flex flex-col items-center gap-4 shrink-0"
+          className="hidden md:flex flex-col items-center gap-8 shrink-0"
           {...fadeUp(0.35)}
         >
-          <div className="w-52 h-52 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center overflow-hidden">
-            <svg
-              viewBox="0 0 200 200"
-              className="w-full h-full"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="100" cy="100" r="100" fill="#1e1e1e" />
-              <circle cx="100" cy="78" r="32" fill="#3f3f3f" />
-              <ellipse cx="100" cy="160" rx="50" ry="36" fill="#3f3f3f" />
-            </svg>
+          <div className="relative flex items-end justify-center overflow-visible ">
+            <img
+              src={profile.src}
+              alt="profile"
+              className="
+      h-auto
+      w-auto
+      max-h-96
+      object-contain
+      brightness-95
+      contrast-105
+      drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]
+    "
+            />
+
+            {/* Fade solo en la parte inferior */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none bg-gradient-to-t from-black via-black/70 to-transparent" />
           </div>
           <div className="text-center">
-            <p className="text-white font-semibold text-sm">Javier Lopez</p>
+            <p className="text-white font-semibold text-3xl">Javier Lopez</p>
             <p className="text-zinc-500 text-xs">{t.hero.subtitle}</p>
           </div>
         </motion.div>

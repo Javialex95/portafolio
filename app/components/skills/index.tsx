@@ -115,11 +115,11 @@ const Skills = () => {
           <div className="flex flex-col gap-6">
             {t.skills.philosophy.map((item, i) => (
               <motion.div
-                key={item.title}
+                key={i}
                 variants={itemVariants}
                 className="flex items-start gap-4"
               >
-                <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-neutral-800 text-indigo-400">
+                <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-neutral-800 text-brown-400">
                   {philosophyIcons[i]}
                 </div>
                 <div className="flex flex-col gap-1">
@@ -136,17 +136,17 @@ const Skills = () => {
 
           {/* Experience card */}
           <motion.div
-            className="rounded-2xl bg-indigo-600 p-7 flex flex-col gap-3"
+            className="rounded-2xl bg-brown-600 p-7 flex flex-col gap-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <span className="text-5xl font-bold text-white">{t.skills.experience.years}</span>
-            <span className="text-xs font-semibold tracking-widest text-indigo-200 uppercase">
+            <span className="text-xs font-semibold tracking-widest text-brown-200 uppercase">
               {t.skills.experience.label}
             </span>
-            <p className="text-sm text-indigo-100 leading-relaxed">
+            <p className="text-sm text-brown-100 leading-relaxed">
               {t.skills.experience.description}
             </p>
           </motion.div>

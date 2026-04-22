@@ -33,7 +33,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a] border-b border-indigo-900/50">
+    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a] border-b border-brown-900/50">
       <nav className="container flex items-center justify-between py-4">
         {/* Logo */}
         <span className="text-white font-bold tracking-widest uppercase text-sm select-none">
@@ -51,7 +51,7 @@ const Header = () => {
                   href={href}
                   className={`text-sm transition-colors pb-1 ${
                     isActive
-                      ? "text-white border-b border-indigo-500"
+                      ? "text-white border-b border-brown-500"
                       : "text-zinc-400 hover:text-white"
                   }`}
                 >
@@ -86,7 +86,7 @@ const Header = () => {
 
           <a
             href="#contact"
-            className="bg-indigo-600 hover:bg-indigo-500 transition-colors text-white text-sm font-semibold px-5 py-2 rounded-lg"
+            className="bg-brown-600 hover:bg-brown-500 transition-colors text-white text-sm font-semibold px-5 py-2 rounded-lg"
           >
             {t.header.connect}
           </a>
