@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "@/app/i18n";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -9,6 +10,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 const InfoBanner = () => {
+  const { t } = useTranslations();
   const tags = ["React", "Next.js", "Node.js", "TypeScript"];
 
   return (
@@ -27,7 +29,7 @@ const InfoBanner = () => {
             {...fadeUp(0.1)}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
-            Available for projects
+            {t.hero.status}
           </motion.span>
 
           {/* Heading */}
@@ -35,15 +37,15 @@ const InfoBanner = () => {
             className="text-5xl md:text-7xl font-extrabold text-white leading-none tracking-tight"
             {...fadeUp(0.2)}
           >
-            Software
+            {t.hero.titleLine1}
             <br />
-            Engineer
+            {t.hero.titleLine2}
           </motion.h1>
 
           {/* Subtitle with line */}
           <motion.div className="flex items-center gap-3" {...fadeUp(0.25)}>
             <span className="text-blue-400 font-semibold text-base whitespace-nowrap">
-              Frontend Tech Lead
+              {t.hero.subtitle}
             </span>
             <span className="h-px flex-1 bg-zinc-700" />
           </motion.div>
@@ -53,9 +55,7 @@ const InfoBanner = () => {
             className="text-zinc-400 text-sm leading-relaxed"
             {...fadeUp(0.3)}
           >
-            Architecting resilient digital experiences through precision
-            engineering. Specializing in high-performance frontend architectures
-            and scalable systems for the modern web.
+            {t.hero.description}
           </motion.p>
 
           {/* Tags */}
@@ -76,7 +76,7 @@ const InfoBanner = () => {
             className="self-start mt-1 flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 transition-colors text-white px-6 py-2.5 rounded-full text-sm font-medium"
             {...fadeUp(0.5)}
           >
-            Contact Me <span aria-hidden>→</span>
+            {t.hero.cta} <span aria-hidden>→</span>
           </motion.a>
         </div>
 
@@ -86,7 +86,6 @@ const InfoBanner = () => {
           {...fadeUp(0.35)}
         >
           <div className="w-52 h-52 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center overflow-hidden">
-            {/* Replace src with your profile image */}
             <svg
               viewBox="0 0 200 200"
               className="w-full h-full"
@@ -100,7 +99,7 @@ const InfoBanner = () => {
           </div>
           <div className="text-center">
             <p className="text-white font-semibold text-sm">Javier Lopez</p>
-            <p className="text-zinc-500 text-xs">Frontend Tech Lead</p>
+            <p className="text-zinc-500 text-xs">{t.hero.subtitle}</p>
           </div>
         </motion.div>
       </div>

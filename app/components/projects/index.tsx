@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "@/app/i18n";
 import {
   mapa,
   mapa2,
@@ -36,8 +37,6 @@ const projects = [
   {
     title: "Samsonite LATAM E-commerce",
     year: [2024, 2025, 2026],
-    description:
-      "Built reusable static sections, led cart & mini-cart business logic, and developed a product comparison tool. Integrated a new search and PLP across all brands.",
     image: samsonite,
     hoverImage: samsonite,
     tags: [
@@ -53,8 +52,6 @@ const projects = [
   {
     title: "Province Electry Supply",
     year: [2024, 2025],
-    description:
-      "A Large B2B e-commerce platform for a major electricity provider in Canada, featuring a custom CMS, REST API, and seamless integration with third-party services — deployed on Vercel with a focus on performance and scalability.",
     image: province,
     hoverImage: province,
     tags: [
@@ -70,8 +67,6 @@ const projects = [
   {
     title: "Festival Estéreo Picnic",
     year: [2021, 2022, 2023, 2024],
-    description:
-      "Biggest music festival in colombia, with more than 100.000 attendees each year. I was responsible for the entire development of the web platform.",
     image: fep1,
     hoverImage: fep3,
     tags: [
@@ -89,8 +84,6 @@ const projects = [
   {
     title: "Feria Vassar",
     year: [2022, 2023],
-    description:
-      "Web platform for Feria Vassar, featuring store profiles, event schedules, and multimedia galleries. I led the development of the platform, which included a custom CMS for content management and a REST API for data fetching.",
     image: vassar1.src,
     hoverImage: vassar2.src,
     tags: [
@@ -107,8 +100,6 @@ const projects = [
   {
     title: "Productos Arquitectónicos ",
     year: [2023],
-    description:
-      "E-commerce platform for Productos Arquitectónicos, a Colombian company that sells architectural products. The platform features a custom CMS for content management, a REST API for data fetching, and seamless integration with third-party services.",
     image: pa1,
     hoverImage: pa3,
     tags: ["React", "CMS", "Animations", "Backend", "Tech lead"],
@@ -116,18 +107,13 @@ const projects = [
   {
     title: "Páramo Presenta",
     year: [2023],
-    description:
-      "Main page for Páramo Presenta, a Colombian company that organizes large concerts and live events.",
     image: paramo1,
     hoverImage: paramo2,
     tags: ["React", "CMS", "Backend", "AWS", "Tech lead"],
   },
-
   {
     title: "Festival Cordillera",
     year: [2022, 2023],
-    description:
-      "Web platform for Festival Cordillera, a major music event in Colombia",
     image: cordill,
     hoverImage: cordill2,
     tags: ["React", "Next.js", "Tailwind", "REST API"],
@@ -135,8 +121,6 @@ const projects = [
   {
     title: "Indio Gurú",
     year: [2022],
-    description:
-      "Starup page for Indio Gurú, where I worked as a main developer, building the entire web platform from scratch",
     image: indio,
     hoverImage: indio,
     tags: ["Javascript", "Animations", "Tech lead"],
@@ -144,7 +128,6 @@ const projects = [
   {
     title: "Baum Festival",
     year: [2021, 2022, 2023],
-    description: "One of the biggest techno music festival in Colombia",
     image: baum.src,
     hoverImage: baum2,
     tags: ["React", "Tech lead", "Animations", "TypeScript"],
@@ -152,8 +135,6 @@ const projects = [
   {
     title: "Motor Show RCN",
     year: [2021],
-    description:
-      "Web platform for Motor Show RCN, a major automotive event in Colombia —  multimedia galleries.",
     image: motor1.src,
     hoverImage: motor2.src,
     tags: [
@@ -167,7 +148,6 @@ const projects = [
   {
     title: "Claro por Colombia",
     year: [2021],
-    description: "Web platform for Claro por Colombia",
     image: claro1.src,
     hoverImage: claro2.src,
     tags: [
@@ -182,8 +162,6 @@ const projects = [
   {
     title: "Colombia 4.0",
     year: [2021],
-    description:
-      "Web platform for Colombia 4.0, a major event in Colombia focused on digital transformation and innovation.",
     image: colombia1.src,
     hoverImage: colombia2.src,
     tags: ["React", "Animations", "Multimedia", "Micro frontends"],
@@ -191,8 +169,6 @@ const projects = [
   {
     title: "Unión Festival Digital",
     year: [2020, 2021],
-    description:
-      "Web platform for Unión Festival Digital, a major music event in Colombia — featuring live streaming, artist profiles, and interactive schedules.",
     image: union1.src,
     hoverImage: union2.src,
     tags: ["Javascript", "Animations", "Multimedia", "Micro frontends"],
@@ -200,8 +176,6 @@ const projects = [
   {
     title: "Congreso Sura",
     year: [2020],
-    description:
-      "Web platform for Congreso Sura, a major event in Colombia focused on digital transformation in the insurance industry — featuring live streaming, session scheduling, and interactive Q&A.",
     image: sura1.src,
     hoverImage: sura2.src,
     tags: ["React", "AWS", "Tech lead"],
@@ -209,8 +183,6 @@ const projects = [
   {
     title: 'Museum "Casa de las memorias"',
     year: [2020],
-    description:
-      'Interactive web experience for the Museum "Casa de las memorias" in Cali, Colombia — featuring virtual tours, historical timelines, and multimedia storytelling to engage visitors with the city\'s rich cultural heritage.',
     image: mapa.src,
     hoverImage: mapa2.src,
     tags: ["JavaScript", "Google Maps Apis"],
@@ -218,8 +190,6 @@ const projects = [
   {
     title: "Cali Solidario",
     year: [2020],
-    description:
-      "Community-driven platform connecting volunteers with local social initiatives in Cali, Colombia — featuring project listings, impact tracking, and a resource library.",
     image: cali.src,
     hoverImage: cali.src,
     tags: ["Javascript", "Shopify"],
@@ -257,9 +227,11 @@ const cardVariants = {
 };
 
 const Projects = () => {
+  const { t } = useTranslations();
+
   return (
     <section id="projects" className="flex flex-col gap-6 py-14 pt-20">
-      <h2 className="text-4xl font-bold">Projects</h2>
+      <h2 className="text-4xl font-bold">{t.projects.title}</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, i) => (
@@ -308,7 +280,7 @@ const Projects = () => {
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                   <span className="text-xs font-medium text-amber-400 leading-none">
-                    Nominated · {project.nomination.award}
+                    {t.projects.nominated} · {project.nomination.award}
                     {project.nomination.by && (
                       <span className="text-amber-400/70">
                         {" "}
@@ -319,8 +291,8 @@ const Projects = () => {
                 </div>
               )}
 
-              <p className="text-sm  leading-relaxed flex-1">
-                {project.description}
+              <p className="text-sm leading-relaxed flex-1">
+                {t.projects.descriptions[i]}
               </p>
 
               {/* Tags */}
