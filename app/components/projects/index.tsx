@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { useTranslations } from "@/app/i18n";
 import {
@@ -198,6 +199,40 @@ const projects = [
 
 const isVideo = (src: string) => /\.(mp4|webm|ogg)$/i.test(src);
 
+const LazyVideo = ({ src, className }: { src: string; className: string }) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={shouldLoad ? src : undefined}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+    />
+  );
+};
+
 const Media = ({
   src,
   alt,
@@ -208,9 +243,10 @@ const Media = ({
   className: string;
 }) =>
   isVideo(src) ? (
-    <video src={src} autoPlay loop muted playsInline className={className} />
+    <LazyVideo src={src} className={className} />
   ) : (
-    <img src={src} alt={alt} className={className} />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} loading="lazy" className={className} />
   );
 
 const cardVariants = {
@@ -242,7 +278,7 @@ const Projects = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={cardVariants}
-            className="group flex flex-col bg-[#2a2a2a] rounded-[10px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            className="group flex flex-col bg-brown-900 rounded-[5px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >
             {/* Media */}
             <div className="relative h-48 overflow-hidden">
